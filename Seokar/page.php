@@ -1,6 +1,6 @@
 <?php
 /**
- * Page Template
+ * Page Template - Seokar Theme
  *
  * @package Seokar
  */
@@ -20,11 +20,19 @@ get_header(); ?>
                     <!-- تصویر شاخص -->
                     <?php if (has_post_thumbnail()) : ?>
                         <div class="page-thumbnail">
+                            <div class="overlay"></div>
                             <?php the_post_thumbnail('seokar-banner', ['loading' => 'lazy']); ?>
                         </div>
                     <?php endif; ?>
 
-                    <!-- عنوان برگه -->
+                    <!-- مسیر صفحه (Breadcrumbs) -->
+                    <nav class="breadcrumbs">
+                        <?php if (function_exists('yoast_breadcrumb')) {
+                            yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+                        } ?>
+                    </nav>
+
+                    <!-- عنوان و اطلاعات برگه -->
                     <header class="entry-header">
                         <h1 class="entry-title"><?php the_title(); ?></h1>
                     </header>
@@ -32,6 +40,13 @@ get_header(); ?>
                     <!-- محتوای برگه -->
                     <div class="entry-content">
                         <?php the_content(); ?>
+                    </div>
+
+                    <!-- دکمه بازگشت به صفحه اصلی -->
+                    <div class="back-to-home">
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="btn-primary">
+                            <?php _e('بازگشت به صفحه اصلی', 'seokar'); ?>
+                        </a>
                     </div>
 
                     <!-- نمایش نظرات (در صورت فعال بودن) -->
