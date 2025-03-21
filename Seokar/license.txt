@@ -1,0 +1,34 @@
+Seokar WordPress Theme  
+Copyright (C) 2024 Seokar Team  
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.  
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/gpl-2.0.html>.  
+
+---
+
+## **📌 مجوز و شرایط استفاده از قالب Seokar**  
+قالب **Seokar** تحت مجوز **GPLv2** منتشر شده است، به این معنی که شما می‌توانید:  
+✅ **از آن در هر وب‌سایتی استفاده کنید (شخصی، تجاری، شرکتی و غیره)**  
+✅ **قالب را ویرایش و شخصی‌سازی کنید**  
+✅ **نسخه‌های ویرایش شده خود را منتشر کنید (با رعایت مجوز GPL)**  
+
+اما شما **نمی‌توانید**:  
+❌ **این قالب را با یک نام جدید بفروشید بدون اینکه لایسنس GPL را حفظ کنید**  
+❌ **حق کپی‌رایت و نام نویسندگان اصلی را حذف کنید**  
+❌ **قالب را به‌صورت انحصاری بفروشید (باید GPL را رعایت کنید)**  
+
+---
+
+## **🔹 اطلاعات بیشتر**  
+برای اطلاعات بیشتر درباره مجوز **GPLv2**، لطفاً به لینک زیر مراجعه کنید:  
+🔗 **[GNU General Public License v2.0](https://www.gnu.org/licenses/gpl-2.0.html)**  
+
+برای پشتیبانی و دریافت به‌روزرسانی‌های جدید، به وب‌سایت رسمی **Seokar** مراجعه کنید:  
+🌍 **[https://seokar.click](https://seokar.click)**  
+
+---
+
+## **📜 کپی‌رایت و اعتبار**  
+این قالب توسط تیم **Seokar** طراحی و توسعه داده شده است. هرگونه بازنشر و ویرایش قالب باید مطابق با قوانین **GPLv2** انجام شود.
