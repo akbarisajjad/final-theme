@@ -1,0 +1,50 @@
+# EditorConfig تنظیمات استاندارد برای توسعه قالب Seokar
+root = true
+
+# 🔹 تنظیمات عمومی برای تمامی فایل‌ها
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# 🔸 تنظیمات برای فایل‌های PHP
+[*.php]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+# 🔹 تنظیمات برای فایل‌های HTML, CSS و JavaScript
+[*.{html,css,scss,js,json}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# 🔸 تنظیمات برای YAML (مثلاً `dependabot.yml`)
+[*.yml]
+indent_style = space
+indent_size = 2
+
+# 🔹 تنظیمات برای فایل‌های Markdown (مانند `README.md`)
+[*.md]
+trim_trailing_whitespace = false
+
+# 🔸 تنظیمات برای فایل‌های JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# 🔹 تنظیمات برای فایل‌های XML
+[*.xml]
+indent_style = space
+indent_size = 4
+
+# 🔸 تنظیمات برای فایل‌های `.htaccess` و `robots.txt`
+[.htaccess, robots.txt]
+end_of_line = lf
+
+# 🔹 تنظیمات برای فایل‌های Shell Script
+[*.sh]
+indent_style = space
+indent_size = 2
+end_of_line = lf
