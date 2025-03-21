@@ -132,4 +132,29 @@ require_once get_template_directory() . '/cli/custom-cli-commands.php';
 if (class_exists('WooCommerce')) {
     require_once get_template_directory() . '/woocommerce/woocommerce-functions.php';
 }
+// 📌 اضافه کردن لینک manifest.json به هدر وردپرس
+function add_manifest_link() {
+    echo '<link rel="manifest" href="' . get_template_directory_uri() . '/manifest.json">';
+}
+add_action('wp_head', 'add_manifest_link');
+
+// 📌 ثبت Service Worker در وردپرس
+function register_service_worker() {
+    ?>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('<?php echo get_template_directory_uri(); ?>/service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+    <?php
+}
+add_action('wp_footer', 'register_service_worker');
 ?>
