@@ -6,7 +6,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+    exit; // خروج در صورت دسترسی مستقیم به فایل
 }
 
 class Seokar_WebP {
@@ -20,9 +20,11 @@ class Seokar_WebP {
     }
 
     private function __construct() {
+        // افزودن هوک‌ها
         add_filter('wp_generate_attachment_metadata', array($this, 'generate_webp_on_upload'), 10, 2);
         add_filter('the_content', array($this, 'replace_images_with_webp'));
         add_filter('post_thumbnail_html', array($this, 'replace_thumbnail_with_webp'), 10, 5);
+        add_action('admin_init', array($this, 'register_webp_settings'));
     }
 
     // بررسی پشتیبانی مرورگر از WebP
@@ -36,15 +38,20 @@ class Seokar_WebP {
         $file_ext = pathinfo($file_path, PATHINFO_EXTENSION);
         $allowed_extensions = array('jpg', 'jpeg', 'png');
 
-        if (in_array(strtolower($file_ext), $allowed_extensions)) {
-            $webp_path = str_replace('.' . $file_ext, '.webp', $file_path);
+        // اگر فرمت تصویر مجاز نبود یا WebP غیرفعال است، ادامه نده
+        if (!in_array(strtolower($file_ext), $allowed_extensions) || !$this->is_webp_enabled()) {
+            return $metadata;
+        }
 
-            if (!file_exists($webp_path)) {
-                $image = $this->create_image_resource($file_path, $file_ext);
-                if ($image !== false) {
-                    imagewebp($image, $webp_path, 85);
-                    imagedestroy($image);
-                }
+        $webp_path = str_replace('.' . $file_ext, '.webp', $file_path);
+
+        // اگر فایل WebP از قبل وجود ندارد، آن را ایجاد کن
+        if (!file_exists($webp_path)) {
+            $image = $this->create_image_resource($file_path, $file_ext);
+            if ($image !== false) {
+                $quality = $this->get_webp_quality(); // کیفیت WebP از تنظیمات
+                imagewebp($image, $webp_path, $quality);
+                imagedestroy($image);
             }
         }
 
@@ -58,7 +65,11 @@ class Seokar_WebP {
             case 'jpeg':
                 return imagecreatefromjpeg($file_path);
             case 'png':
-                return imagecreatefrompng($file_path);
+                $image = imagecreatefrompng($file_path);
+                imagepalettetotruecolor($image); // تبدیل پالت به رنگ‌های واقعی برای PNG
+                imagealphablending($image, true); // فعال‌سازی شفافیت
+                imagesavealpha($image, true); // ذخیره شفافیت
+                return $image;
             default:
                 return false;
         }
@@ -66,7 +77,7 @@ class Seokar_WebP {
 
     // جایگزینی تصاویر در محتوای پست‌ها با WebP
     public function replace_images_with_webp($content) {
-        if (!$this->supports_webp()) {
+        if (!$this->supports_webp() || !$this->is_webp_enabled()) {
             return $content;
         }
 
@@ -81,7 +92,7 @@ class Seokar_WebP {
 
     // جایگزینی تصاویر شاخص با WebP
     public function replace_thumbnail_with_webp($html, $post_id, $post_thumbnail_id, $size, $attr) {
-        if (!$this->supports_webp()) {
+        if (!$this->supports_webp() || !$this->is_webp_enabled()) {
             return $html;
         }
 
@@ -101,6 +112,59 @@ class Seokar_WebP {
     // تبدیل URL به مسیر فیزیکی فایل در سرور
     private function convert_url_to_path($url) {
         return str_replace(get_site_url(), ABSPATH, $url);
+    }
+
+    // ثبت تنظیمات WebP در پیشخوان وردپرس
+    public function register_webp_settings() {
+        register_setting('seokar_webp_settings', 'seokar_webp_enabled');
+        register_setting('seokar_webp_settings', 'seokar_webp_quality');
+
+        add_settings_section(
+            'seokar_webp_main_section',
+            __('تنظیمات WebP', 'seokar'),
+            '__return_false',
+            'seokar_webp_options'
+        );
+
+        add_settings_field(
+            'seokar_webp_enabled',
+            __('فعال‌سازی WebP', 'seokar'),
+            array($this, 'webp_enabled_callback'),
+            'seokar_webp_options',
+            'seokar_webp_main_section'
+        );
+
+        add_settings_field(
+            'seokar_webp_quality',
+            __('کیفیت WebP', 'seokar'),
+            array($this, 'webp_quality_callback'),
+            'seokar_webp_options',
+            'seokar_webp_main_section'
+        );
+    }
+
+    // فیلد فعال‌سازی WebP
+    public function webp_enabled_callback() {
+        $value = get_option('seokar_webp_enabled', true);
+        echo '<input type="checkbox" name="seokar_webp_enabled" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، تصاویر به فرمت WebP تبدیل می‌شوند.', 'seokar') . '</p>';
+    }
+
+    // فیلد کیفیت WebP
+    public function webp_quality_callback() {
+        $value = get_option('seokar_webp_quality', 85);
+        echo '<input type="number" name="seokar_webp_quality" value="' . esc_attr($value) . '" min="1" max="100">';
+        echo '<p class="description">' . __('کیفیت تصاویر WebP (بین ۱ تا ۱۰۰).', 'seokar') . '</p>';
+    }
+
+    // بررسی فعال بودن WebP
+    private function is_webp_enabled() {
+        return get_option('seokar_webp_enabled', true);
+    }
+
+    // دریافت کیفیت WebP
+    private function get_webp_quality() {
+        return get_option('seokar_webp_quality', 85);
     }
 }
 
