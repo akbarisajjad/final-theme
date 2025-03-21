@@ -81,7 +81,7 @@ require_once get_template_directory() . '/config/customizer.php';
 // بارگذاری ابزارک‌های سفارشی
 require_once get_template_directory() . '/widgets/custom-widget.php';
 require_once get_template_directory() . '/widgets/widget-functions.php';
-
+require_once get_template_directory() . '/widgets/widgets.php';
 // مدیریت کامپوننت‌های بلوک گوتنبرگ
 require_once get_template_directory() . '/blocks/custom-block-1/render.php';
 require_once get_template_directory() . '/blocks/custom-block-2/render.php';
