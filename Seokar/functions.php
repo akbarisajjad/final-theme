@@ -11,31 +11,22 @@ if (!defined('ABSPATH')) {
 
 // ۱. تنظیمات اولیه قالب
 function seokar_theme_setup() {
-    // پشتیبانی از تصاویر شاخص
-    add_theme_support('post-thumbnails');
-
-    // ثبت منوها
-    register_nav_menus(array(
-        'primary' => __('منوی اصلی', 'seokar'),
-        'footer'  => __('منوی فوتر', 'seokar'),
-    ));
-
-    // پشتیبانی از لوگوی سفارشی
-    add_theme_support('custom-logo', array(
+    add_theme_support('post-thumbnails'); // پشتیبانی از تصاویر شاخص
+    add_theme_support('title-tag'); // پشتیبانی از عنوان داینامیک
+    add_theme_support('automatic-feed-links'); // پشتیبانی از فید RSS
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption')); // پشتیبانی از HTML5
+    add_theme_support('custom-logo', array( // پشتیبانی از لوگوی سفارشی
         'height'      => 50,
         'width'       => 200,
         'flex-height' => true,
         'flex-width'  => true,
     ));
 
-    // پشتیبانی از عنوان داینامیک سایت
-    add_theme_support('title-tag');
-
-    // پشتیبانی از HTML5 در فرم‌ها و گالری‌ها
-    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
-
-    // پشتیبانی از فید RSS
-    add_theme_support('automatic-feed-links');
+    // ثبت منوهای قالب
+    register_nav_menus(array(
+        'primary' => __('منوی اصلی', 'seokar'),
+        'footer'  => __('منوی فوتر', 'seokar'),
+    ));
 }
 add_action('after_setup_theme', 'seokar_theme_setup');
 
@@ -106,90 +97,39 @@ function seokar_custom_fonts() {
 }
 add_action('wp_head', 'seokar_custom_fonts');
 
-// تنظیمات اولیه قالب
-require_once get_template_directory() . '/inc/setup.php';
+// ۹. بارگذاری فایل‌های ضروری قالب از `inc/`
+$seokar_includes = array(
+    'setup.php', 'enqueue.php', 'theme-functions.php', 'theme-hooks.php', 'seo.php', 
+    'security.php', 'i18n.php', 'user-roles.php', 'ajax.php', 'rest-api.php', 
+    'caching.php', 'optimization.php', 'debug.php', 'legacy-browsers.php', 
+    'accessibility.php', 'multisite.php', 'custom-fields.php', 
+    'custom-post-types.php', 'custom-taxonomies.php', 'shortcodes.php', 
+    'webp.php', 'error-handling.php', 'theme-options.php'
+);
+foreach ($seokar_includes as $file) {
+    require_once get_template_directory() . '/inc/' . $file;
+}
 
-// بارگذاری استایل‌ها و اسکریپت‌ها
-require_once get_template_directory() . '/inc/enqueue.php';
-
-// بارگذاری توابع عمومی قالب
-require_once get_template_directory() . '/inc/theme-functions.php';
-
-// مدیریت هوک‌های قالب
-require_once get_template_directory() . '/inc/theme-hooks.php';
-
-// تنظیمات سئو
-require_once get_template_directory() . '/inc/seo.php';
-
-// توابع امنیتی
-require_once get_template_directory() . '/inc/security.php';
-
-// پشتیبانی از زبان‌های مختلف
-require_once get_template_directory() . '/inc/i18n.php';
-
-// مدیریت نقش‌های کاربران
-require_once get_template_directory() . '/inc/user-roles.php';
-
-// مدیریت درخواست‌های AJAX
-require_once get_template_directory() . '/inc/ajax.php';
-
-// بارگذاری APIهای REST
-require_once get_template_directory() . '/inc/rest-api.php';
-
-// مدیریت کش و بهینه‌سازی
-require_once get_template_directory() . '/inc/caching.php';
-require_once get_template_directory() . '/inc/optimization.php';
-
-// ابزارهای اشکال‌زدایی و دیباگ
-require_once get_template_directory() . '/inc/debug.php';
-
-// سازگاری با مرورگرهای قدیمی
-require_once get_template_directory() . '/inc/legacy-browsers.php';
-
-// مدیریت دسترس‌پذیری
-require_once get_template_directory() . '/inc/accessibility.php';
-
-// پشتیبانی از قابلیت چند سایتی (Multisite)
-require_once get_template_directory() . '/inc/multisite.php';
-
-// پشتیبانی از فیلدهای سفارشی
-require_once get_template_directory() . '/inc/custom-fields.php';
-
-// پشتیبانی از محتوای سفارشی (CPT و Taxonomies)
-require_once get_template_directory() . '/inc/custom-post-types.php';
-require_once get_template_directory() . '/inc/custom-taxonomies.php';
-
-// مدیریت شورت‌کدها
-require_once get_template_directory() . '/inc/shortcodes.php';
-
-// پشتیبانی از WebP
-require_once get_template_directory() . '/inc/webp.php';
-
-// مدیریت خطاها
-require_once get_template_directory() . '/inc/error-handling.php';
-
-// مدیریت تنظیمات قالب
-require_once get_template_directory() . '/inc/theme-options.php';
-
-// پنل تنظیمات وردپرس (Customizer)
+// ۱۰. بارگذاری تنظیمات و سفارشی‌سازی قالب
 require_once get_template_directory() . '/config/customizer.php';
 
-// بارگذاری ابزارک‌های سفارشی
-require_once get_template_directory() . '/widgets/custom-widget.php';
-require_once get_template_directory() . '/widgets/widget-functions.php';
-require_once get_template_directory() . '/widgets/widgets.php';
-// مدیریت کامپوننت‌های بلوک گوتنبرگ
-require_once get_template_directory() . '/blocks/custom-block-1/render.php';
-require_once get_template_directory() . '/blocks/custom-block-2/render.php';
+// ۱۱. بارگذاری ابزارک‌های سفارشی
+$seokar_widgets = array('custom-widget.php', 'widget-functions.php', 'widgets.php');
+foreach ($seokar_widgets as $widget) {
+    require_once get_template_directory() . '/widgets/' . $widget;
+}
 
-// بارگذاری دستورات CLI سفارشی
+// ۱۲. بارگذاری بلوک‌های گوتنبرگ
+$seokar_blocks = array('custom-block-1/render.php', 'custom-block-2/render.php');
+foreach ($seokar_blocks as $block) {
+    require_once get_template_directory() . '/blocks/' . $block;
+}
+
+// ۱۳. بارگذاری دستورات CLI سفارشی
 require_once get_template_directory() . '/cli/custom-cli-commands.php';
 
-// مدیریت فایل‌های ووکامرس (اگر فعال باشد)
+// ۱۴. بررسی و بارگذاری ووکامرس (اگر فعال باشد)
 if (class_exists('WooCommerce')) {
     require_once get_template_directory() . '/woocommerce/woocommerce-functions.php';
 }
-
-// توابع کمکی دیگر می‌توانند در اینجا اضافه شوند...
-
 ?>
