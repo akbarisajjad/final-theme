@@ -179,6 +179,225 @@ class Seokar_Theme_Options {
         echo '<p class="description">' . __('آدرس تصویر تبلیغاتی را وارد کنید.', 'seokar') . '</p>';
     }
 }
+register_setting('seokar_theme_settings', 'seokar_lazyload');
+add_settings_field(
+    'seokar_lazyload',
+    __('فعال‌سازی بارگذاری تنبل تصاویر', 'seokar'),
+    function() {
+        $value = get_option('seokar_lazyload', false);
+        echo '<input type="checkbox" name="seokar_lazyload" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، تصاویر فقط هنگام مشاهده توسط کاربر بارگذاری می‌شوند.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+register_setting('seokar_theme_settings', 'seokar_disable_emoji');
+register_setting('seokar_theme_settings', 'seokar_disable_embeds');
+
+add_settings_field(
+    'seokar_disable_emoji',
+    __('حذف ایموجی‌های وردپرس', 'seokar'),
+    function() {
+        $value = get_option('seokar_disable_emoji', false);
+        echo '<input type="checkbox" name="seokar_disable_emoji" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، ایموجی‌های پیش‌فرض وردپرس غیرفعال خواهند شد.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+add_settings_field(
+    'seokar_disable_embeds',
+    __('غیرفعال‌سازی Embeds وردپرس', 'seokar'),
+    function() {
+        $value = get_option('seokar_disable_embeds', false);
+        echo '<input type="checkbox" name="seokar_disable_embeds" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، قابلیت Embeds که باعث بارگذاری اسکریپت‌های اضافی می‌شود، غیرفعال خواهد شد.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+if (class_exists('WooCommerce')) {
+    register_setting('seokar_theme_settings', 'seokar_catalog_mode');
+    register_setting('seokar_theme_settings', 'seokar_hide_product_reviews');
+
+    add_settings_field(
+        'seokar_catalog_mode',
+        __('فعال‌سازی حالت کاتالوگ', 'seokar'),
+        function() {
+            $value = get_option('seokar_catalog_mode', false);
+            echo '<input type="checkbox" name="seokar_catalog_mode" value="1" ' . checked(1, $value, false) . '>';
+            echo '<p class="description">' . __('اگر فعال باشد، قیمت و دکمه‌های خرید محصولات مخفی خواهند شد.', 'seokar') . '</p>';
+        },
+        'seokar_theme_options',
+        'seokar_theme_main_section'
+    );
+
+    add_settings_field(
+        'seokar_hide_product_reviews',
+        __('مخفی کردن نظرات محصولات', 'seokar'),
+        function() {
+            $value = get_option('seokar_hide_product_reviews', false);
+            echo '<input type="checkbox" name="seokar_hide_product_reviews" value="1" ' . checked(1, $value, false) . '>';
+            echo '<p class="description">' . __('اگر فعال باشد، تب نظرات در صفحات محصولات مخفی خواهد شد.', 'seokar') . '</p>';
+        },
+        'seokar_theme_options',
+        'seokar_theme_main_section'
+    );
+}
+register_setting('seokar_theme_settings', 'seokar_show_sidebar_posts');
+register_setting('seokar_theme_settings', 'seokar_show_sidebar_archives');
+register_setting('seokar_theme_settings', 'seokar_show_sidebar_products');
+
+add_settings_field(
+    'seokar_show_sidebar_posts',
+    __('نمایش سایدبار در نوشته‌ها', 'seokar'),
+    function() {
+        $value = get_option('seokar_show_sidebar_posts', true);
+        echo '<input type="checkbox" name="seokar_show_sidebar_posts" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر غیرفعال باشد، سایدبار در صفحات نوشته‌ها نمایش داده نمی‌شود.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+add_settings_field(
+    'seokar_show_sidebar_archives',
+    __('نمایش سایدبار در صفحات بایگانی', 'seokar'),
+    function() {
+        $value = get_option('seokar_show_sidebar_archives', true);
+        echo '<input type="checkbox" name="seokar_show_sidebar_archives" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر غیرفعال باشد، سایدبار در صفحات دسته‌بندی و بایگانی نمایش داده نمی‌شود.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+if (class_exists('WooCommerce')) {
+    add_settings_field(
+        'seokar_show_sidebar_products',
+        __('نمایش سایدبار در صفحات محصول', 'seokar'),
+        function() {
+            $value = get_option('seokar_show_sidebar_products', true);
+            echo '<input type="checkbox" name="seokar_show_sidebar_products" value="1" ' . checked(1, $value, false) . '>';
+            echo '<p class="description">' . __('اگر غیرفعال باشد، سایدبار در صفحات محصول ووکامرس نمایش داده نمی‌شود.', 'seokar') . '</p>';
+        },
+        'seokar_theme_options',
+        'seokar_theme_main_section'
+    );
+}
+
+register_setting('seokar_theme_settings', 'seokar_ad_header');
+register_setting('seokar_theme_settings', 'seokar_ad_footer');
+register_setting('seokar_theme_settings', 'seokar_ad_between_posts');
+
+add_settings_field(
+    'seokar_ad_header',
+    __('تبلیغ در هدر', 'seokar'),
+    function() {
+        $value = get_option('seokar_ad_header', '');
+        echo '<input type="text" name="seokar_ad_header" value="' . esc_attr($value) . '" class="regular-text">';
+        echo '<p class="description">' . __('لینک تصویر تبلیغاتی برای نمایش در هدر.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+add_settings_field(
+    'seokar_ad_footer',
+    __('تبلیغ در فوتر', 'seokar'),
+    function() {
+        $value = get_option('seokar_ad_footer', '');
+        echo '<input type="text" name="seokar_ad_footer" value="' . esc_attr($value) . '" class="regular-text">';
+        echo '<p class="description">' . __('لینک تصویر تبلیغاتی برای نمایش در فوتر.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+register_setting('seokar_theme_settings', 'seokar_disable_rss');
+add_settings_field(
+    'seokar_disable_rss',
+    __('غیرفعال‌سازی فید RSS', 'seokar'),
+    function() {
+        $value = get_option('seokar_disable_rss', false);
+        echo '<input type="checkbox" name="seokar_disable_rss" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('با فعال کردن این گزینه، فید RSS سایت غیرفعال می‌شود.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+register_setting('seokar_theme_settings', 'seokar_enable_amp');
+add_settings_field(
+    'seokar_enable_amp',
+    __('فعال‌سازی AMP', 'seokar'),
+    function() {
+        $value = get_option('seokar_enable_amp', false);
+        echo '<input type="checkbox" name="seokar_enable_amp" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، نسخه AMP صفحات ایجاد خواهد شد.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+function seokar_get_post_views($postID) {
+    $count = get_post_meta($postID, 'seokar_post_views', true);
+    if ($count == '') {
+        delete_post_meta($postID, 'seokar_post_views');
+        add_post_meta($postID, 'seokar_post_views', '0');
+        return "0 بازدید";
+    }
+    return $count . ' بازدید';
+}
+
+function seokar_set_post_views($postID) {
+    $count = get_post_meta($postID, 'seokar_post_views', true);
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($postID, 'seokar_post_views');
+        add_post_meta($postID, 'seokar_post_views', '0');
+    } else {
+        $count++;
+        update_post_meta($postID, 'seokar_post_views', $count);
+    }
+}
+add_action('wp_head', function() {
+    if (is_single()) {
+        seokar_set_post_views(get_the_ID());
+    }
+});
+register_setting('seokar_theme_settings', 'seokar_enable_sitemap');
+add_settings_field(
+    'seokar_enable_sitemap',
+    __('فعال‌سازی نقشه سایت XML', 'seokar'),
+    function() {
+        $value = get_option('seokar_enable_sitemap', false);
+        echo '<input type="checkbox" name="seokar_enable_sitemap" value="1" ' . checked(1, $value, false) . '>';
+        echo '<p class="description">' . __('اگر فعال باشد، نقشه سایت XML به‌صورت خودکار ایجاد می‌شود.', 'seokar') . '</p>';
+    },
+    'seokar_theme_options',
+    'seokar_theme_main_section'
+);
+
+function seokar_generate_sitemap() {
+    if (!get_option('seokar_enable_sitemap')) {
+        return;
+    }
+
+    $posts = get_posts(array('numberposts' => -1, 'post_type' => 'post', 'post_status' => 'publish'));
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+    foreach ($posts as $post) {
+        $xml .= '<url>';
+        $xml .= '<loc>' . get_permalink($post->ID) . '</loc>';
+        $xml .= '<lastmod>' . get_the_modified_time('Y-m-d', $post->ID) . '</lastmod>';
+        $xml .= '</url>';
+    }
+
+    $xml .= '</urlset>';
+    file_put_contents(ABSPATH . 'sitemap.xml', $xml);
+}
+add_action('save_post', 'seokar_generate_sitemap');
 
 // مقداردهی اولیه کلاس
 Seokar_Theme_Options::get_instance();
