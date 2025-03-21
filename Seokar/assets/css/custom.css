@@ -607,3 +607,73 @@
         grid-template-columns: 1fr;
     }
 }
+/* ======= صفحه خطای 404 ======= */
+.error-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.error-content {
+    max-width: 600px;
+}
+
+.error-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* دکمه بازگشت به صفحه اصلی */
+.back-to-home {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+}
+
+/* تصویر 404 */
+.error-image img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+/* ریسپانسیو */
+@media (min-width: 768px) {
+    .error-404 {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .error-content {
+        text-align: left;
+    }
+
+    .error-image img {
+        max-width: 500px;
+    }
+}
