@@ -864,3 +864,47 @@
         grid-template-columns: 1fr;
     }
 }
+/* ======= استایل صفحه نویسنده (author.php) ======= */
+.author-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.author-avatar img {
+    border-radius: 50%;
+    box-shadow: var(--shadow-light);
+}
+
+.author-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.author-bio {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* لینک‌های شبکه‌های اجتماعی نویسنده */
+.author-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.author-social a {
+    padding: 8px 12px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.author-social a:hover {
+    background: var(--accent-color);
+}
