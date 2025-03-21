@@ -841,3 +841,107 @@
     background: var(--accent-color);
     transform: scale(1.05);
 }
+/* ======= استایل صفحه پیوست (attachment.php) ======= */
+.attachment-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.attachment-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.attachment-meta {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.attachment-meta i {
+    margin-right: 5px;
+}
+
+/* نمایش فایل پیوست */
+.attachment-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.attachment-media img,
+.attachment-media video,
+.attachment-media embed {
+    width: 100%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+/* دکمه دانلود */
+.download-button {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+}
+
+/* توضیحات فایل */
+.attachment-caption {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.attachment-caption h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.attachment-caption p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* نویگیشن بین فایل‌ها */
+.attachment-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.attachment-navigation a {
+    display: inline-block;
+    padding: 8px 12px;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.attachment-navigation a:hover {
+    background: var(--primary-color);
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .attachment-media img,
+    .attachment-media video,
+    .attachment-media embed {
+        max-width: 100%;
+    }
+}
