@@ -1,6 +1,6 @@
 <?php
 /**
- * Author Archive Template - Seokar Theme
+ * Author Archive Template - Seokar Theme (Advanced)
  *
  * @package Seokar
  */
@@ -18,25 +18,37 @@ get_header(); ?>
             <!-- اطلاعات نویسنده -->
             <header class="author-header">
                 <div class="author-avatar">
-                    <?php echo get_avatar(get_the_author_meta('ID'), 120); ?>
+                    <?php echo get_avatar(get_the_author_meta('ID'), 150); ?>
                 </div>
                 <h1 class="author-title"><?php printf(__('نوشته‌های %s', 'seokar'), get_the_author()); ?></h1>
+                <p class="author-post-count">
+                    <?php printf(__('تعداد مقالات منتشر شده: %s', 'seokar'), count_user_posts(get_the_author_meta('ID'))); ?>
+                </p>
                 <?php if (get_the_author_meta('description')) : ?>
                     <p class="author-bio"><?php echo esc_html(get_the_author_meta('description')); ?></p>
                 <?php endif; ?>
 
-                <!-- لینک‌های شبکه‌های اجتماعی نویسنده (در صورت وجود) -->
+                <!-- لینک‌های شبکه‌های اجتماعی نویسنده -->
                 <div class="author-social">
                     <?php if (get_the_author_meta('twitter')) : ?>
-                        <a href="<?php echo esc_url(get_the_author_meta('twitter')); ?>" target="_blank">توییتر</a>
+                        <a href="<?php echo esc_url(get_the_author_meta('twitter')); ?>" target="_blank">
+                            <i class="fab fa-twitter"></i> توییتر
+                        </a>
                     <?php endif; ?>
                     <?php if (get_the_author_meta('linkedin')) : ?>
-                        <a href="<?php echo esc_url(get_the_author_meta('linkedin')); ?>" target="_blank">لینکدین</a>
+                        <a href="<?php echo esc_url(get_the_author_meta('linkedin')); ?>" target="_blank">
+                            <i class="fab fa-linkedin"></i> لینکدین
+                        </a>
+                    <?php endif; ?>
+                    <?php if (get_the_author_meta('github')) : ?>
+                        <a href="<?php echo esc_url(get_the_author_meta('github')); ?>" target="_blank">
+                            <i class="fab fa-github"></i> گیت‌هاب
+                        </a>
                     <?php endif; ?>
                 </div>
             </header>
 
-            <!-- نمایش مطالب نویسنده -->
+            <!-- نمایش مقالات نویسنده -->
             <?php if (have_posts()) : ?>
                 <div class="post-grid">
                     <?php while (have_posts()) : the_post(); ?>
@@ -53,8 +65,8 @@ get_header(); ?>
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h2>
                                 <div class="post-meta">
-                                    <span class="post-date"><?php echo get_the_date(); ?></span>
-                                    <span class="post-author"><?php the_author(); ?></span>
+                                    <span class="post-date"><i class="far fa-calendar-alt"></i> <?php echo get_the_date(); ?></span>
+                                    <span class="post-author"><i class="far fa-user"></i> <?php the_author(); ?></span>
                                 </div>
                                 <div class="post-excerpt">
                                     <?php the_excerpt(); ?>
