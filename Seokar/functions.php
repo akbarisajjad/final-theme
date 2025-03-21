@@ -1,14 +1,110 @@
 <?php
 /**
- * Seokar Theme Functions
+ * Functions and Definitions - Seokar Theme
  *
  * @package Seokar
  */
 
-// جلوگیری از دسترسی مستقیم به فایل
 if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+    exit;
 }
+
+// ۱. تنظیمات اولیه قالب
+function seokar_theme_setup() {
+    // پشتیبانی از تصاویر شاخص
+    add_theme_support('post-thumbnails');
+
+    // ثبت منوها
+    register_nav_menus(array(
+        'primary' => __('منوی اصلی', 'seokar'),
+        'footer'  => __('منوی فوتر', 'seokar'),
+    ));
+
+    // پشتیبانی از لوگوی سفارشی
+    add_theme_support('custom-logo', array(
+        'height'      => 50,
+        'width'       => 200,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ));
+
+    // پشتیبانی از عنوان داینامیک سایت
+    add_theme_support('title-tag');
+
+    // پشتیبانی از HTML5 در فرم‌ها و گالری‌ها
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+
+    // پشتیبانی از فید RSS
+    add_theme_support('automatic-feed-links');
+}
+add_action('after_setup_theme', 'seokar_theme_setup');
+
+// ۲. لود فایل‌های استایل و جاوا اسکریپت
+function seokar_enqueue_scripts() {
+    $theme_version = wp_get_theme()->get('Version');
+
+    // فایل‌های CSS
+    wp_enqueue_style('seokar-style', get_stylesheet_uri(), array(), $theme_version);
+    wp_enqueue_style('seokar-custom', get_template_directory_uri() . '/assets/css/custom.css', array(), $theme_version);
+
+    // فایل‌های جاوا اسکریپت
+    wp_enqueue_script('seokar-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), $theme_version, true);
+}
+add_action('wp_enqueue_scripts', 'seokar_enqueue_scripts');
+
+// ۳. ثبت سایدبارها و ابزارک‌ها
+function seokar_widgets_init() {
+    register_sidebar(array(
+        'name'          => __('سایدبار اصلی', 'seokar'),
+        'id'            => 'main-sidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+}
+add_action('widgets_init', 'seokar_widgets_init');
+
+// ۴. افزودن کلاس به لینک‌های منو
+function seokar_nav_menu_class($classes, $item, $args) {
+    if (isset($args->theme_location) && $args->theme_location == 'primary') {
+        $classes[] = 'nav-item';
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'seokar_nav_menu_class', 10, 3);
+
+// ۵. تغییر طول خلاصه نوشته‌ها
+function seokar_excerpt_length($length) {
+    return 25; // تعداد کلمات خلاصه
+}
+add_filter('excerpt_length', 'seokar_excerpt_length');
+
+// ۶. افزودن دکمه "ادامه مطلب" به خلاصه نوشته‌ها
+function seokar_excerpt_more($more) {
+    return '... <a class="read-more" href="' . get_permalink() . '">' . __('ادامه مطلب', 'seokar') . '</a>';
+}
+add_filter('excerpt_more', 'seokar_excerpt_more');
+
+// ۷. امنیت: حذف ورژن وردپرس از سورس کد
+function seokar_remove_wp_version() {
+    return '';
+}
+add_filter('the_generator', 'seokar_remove_wp_version');
+
+// ۸. افزودن قابلیت بارگذاری فونت سفارشی
+function seokar_custom_fonts() {
+    echo '<style>
+        @font-face {
+            font-family: "CustomFont";
+            src: url("' . get_template_directory_uri() . '/assets/fonts/custom-font.woff2") format("woff2");
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { font-family: "CustomFont", sans-serif; }
+    </style>';
+}
+add_action('wp_head', 'seokar_custom_fonts');
 
 // تنظیمات اولیه قالب
 require_once get_template_directory() . '/inc/setup.php';
