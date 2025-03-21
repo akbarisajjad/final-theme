@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php"
+         backupGlobals="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnFailure="true"
+         stopOnError="true"
+         verbose="true"
+         failOnRisky="true"
+         failOnWarning="true">
+
+    <!-- 🔹 تنظیمات عمومی -->
+    <testsuite name="Seokar Theme Unit Tests">
+        <directory>./tests/unit</directory>
+    </testsuite>
+
+    <testsuite name="Seokar Theme Integration Tests">
+        <directory>./tests/integration</directory>
+    </testsuite>
+
+    <!-- 🌎 متغیرهای محیطی -->
+    <php>
+        <env name="WP_TESTS_DIR" value="/tmp/wordpress-tests-lib" />
+        <env name="WP_CORE_DIR" value="/tmp/wordpress/" />
+        <env name="DB_NAME" value="wordpress_test" />
+        <env name="DB_USER" value="root" />
+        <env name="DB_PASSWORD" value="root" />
+        <env name="DB_HOST" value="127.0.0.1" />
+        <env name="WP_DEBUG" value="true" />
+        <env name="WP_ENVIRONMENT_TYPE" value="testing" />
+        <env name="DISABLE_WP_CRON" value="true" />
+    </php>
+
+    <!-- 📊 گزارش‌گیری از تست‌ها -->
+    <logging>
+        <log type="junit" target="tests/logs/junit.xml"/>
+        <log type="coverage-html" target="tests/logs/coverage"/>
+        <log type="coverage-clover" target="tests/logs/clover.xml"/>
+    </logging>
+
+    <!-- 🛠️ تنظیمات Code Coverage -->
+    <coverage>
+        <include>
+            <directory suffix=".php">./inc/</directory>
+            <directory suffix=".php">./classes/</directory>
+            <directory suffix=".php">./includes/</directory>
+            <directory suffix=".php">./templates/</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">./tests/</directory>
+            <directory suffix=".php">./vendor/</directory>
+            <file>./wp-config.php</file>
+        </exclude>
+    </coverage>
+
+    <!-- 🚀 بهینه‌سازی برای عملکرد بهتر -->
+    <processIsolation>false</processIsolation>
+    <cache directory="./tests/cache" />
+    <executionOrder>random</executionOrder>
+    <stopOnRisky>true</stopOnRisky>
+    <stopOnIncomplete>true</stopOnIncomplete>
+    <stopOnSkipped>true</stopOnSkipped>
+
+    <!-- ✅ پشتیبانی از تست‌های پارالل برای اجرای سریع‌تر -->
+    <extensions>
+        <extension class="ParaTest\Runners\PHPUnit\JUnit\JUnitXmlLogger" />
+    </extensions>
+
+</phpunit>
