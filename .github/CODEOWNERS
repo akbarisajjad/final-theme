@@ -1,1 +1,58 @@
-اآ
+# 🚀 CODEOWNERS for Seokar WordPress Theme
+
+# Global owners for the entire repository
+* @akbarisajjad @seokar-team
+
+# Core theme files
+/style.css @seokar-team
+/functions.php @seokar-team
+/index.php @seokar-team
+
+# Assets (CSS, JS, Images, Fonts)
+/assets/ @seokar-design-team
+
+# Template files
+/templates/ @seokar-dev-team
+
+# Language files
+/languages/ @seokar-dev-team @seokar-translators
+
+# Documentation
+/docs/ @seokar-docs-team
+/README.md @seokar-docs-team
+/CONTRIBUTING.md @seokar-docs-team
+
+# Tests
+/tests/ @seokar-dev-team @seokar-qa-team
+
+# GitHub-specific files
+.github/ @seokar-admin-team
+.github/CODEOWNERS @seokar-admin-team
+.github/workflows/ @seokar-ci-team
+
+# Composer and npm dependencies
+/composer.json @seokar-dev-team
+/package.json @seokar-dev-team
+
+# Configuration files
+/.gitignore @seokar-dev-team
+/.editorconfig @seokar-dev-team
+/.phpcs.xml @seokar-dev-team
+/.eslintrc @seokar-dev-team
+/.stylelintrc @seokar-dev-team
+
+# License and legal files
+/LICENSE @seokar-admin-team
+/SECURITY.md @seokar-admin-team
+
+# Issue and Pull Request templates
+.github/ISSUE_TEMPLATE/ @seokar-admin-team
+.github/PULL_REQUEST_TEMPLATE.md @seokar-admin-team
+
+# Special cases
+# Assign specific files to specific individuals
+/important-file.php @akbarisajjad
+/another-important-file.php @seokar-dev-lead
+
+# Fallback: If no specific owner is found, assign to the core team
+* @seokar-team
