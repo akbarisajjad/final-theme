@@ -124,3 +124,4 @@ function seokar_admin_enqueue_styles($hook) {
     }
 }
 add_action('admin_enqueue_scripts', 'seokar_admin_enqueue_styles');
+require_once get_template_directory() . '/admin/admin-settings.php';
