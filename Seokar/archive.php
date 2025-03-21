@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive Template - Seokar Theme
+ * Archive Template - Seokar Theme (Professional Version)
  *
  * @package Seokar
  */
@@ -15,14 +15,14 @@ get_header(); ?>
     <div class="content-wrapper">
         <main id="primary" class="site-main">
 
-            <!-- عنوان داینامیک آرشیو -->
+            <!-- هدر آرشیو -->
             <header class="archive-header">
                 <h1 class="archive-title">
                     <?php
                     if (is_category()) {
-                        single_cat_title();
+                        printf(__('مطالب دسته: %s', 'seokar'), single_cat_title('', false));
                     } elseif (is_tag()) {
-                        single_tag_title();
+                        printf(__('مطالب برچسب: %s', 'seokar'), single_tag_title('', false));
                     } elseif (is_author()) {
                         printf(__('نوشته‌های %s', 'seokar'), get_the_author());
                     } elseif (is_year()) {
@@ -32,15 +32,16 @@ get_header(); ?>
                     } elseif (is_day()) {
                         printf(__('آرشیو %s', 'seokar'), get_the_date('F j, Y'));
                     } else {
-                        _e('آرشیو', 'seokar');
+                        _e('آرشیو مطالب', 'seokar');
                     }
                     ?>
                 </h1>
+                <p class="archive-count"><?php printf(__('تعداد مطالب: %s', 'seokar'), $wp_query->found_posts); ?></p>
             </header>
 
-            <!-- فیلتر دسته‌بندی -->
-            <div class="category-filter">
-                <form action="<?php echo esc_url(home_url('/')); ?>" method="get">
+            <!-- فیلتر دسته‌بندی و تاریخ -->
+            <div class="filter-container">
+                <form id="archive-filter" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                     <select name="cat" onchange="this.form.submit()">
                         <option value=""><?php _e('انتخاب دسته‌بندی', 'seokar'); ?></option>
                         <?php
@@ -50,13 +51,25 @@ get_header(); ?>
                         }
                         ?>
                     </select>
+
+                    <select name="year" onchange="this.form.submit()">
+                        <option value=""><?php _e('انتخاب سال', 'seokar'); ?></option>
+                        <?php
+                        global $wpdb;
+                        $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' ORDER BY post_date DESC");
+                        foreach ($years as $year) {
+                            echo '<option value="' . esc_attr($year) . '">' . esc_html($year) . '</option>';
+                        }
+                        ?>
+                    </select>
                 </form>
             </div>
 
+            <!-- نمایش مطالب -->
             <?php if (have_posts()) : ?>
-                <div class="post-grid">
+                <div id="post-container" class="post-grid">
                     <?php while (have_posts()) : the_post(); ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class('post-item'); ?>>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class('post-item animated-fade-in'); ?>>
                             <a href="<?php the_permalink(); ?>" class="post-thumbnail">
                                 <?php if (has_post_thumbnail()) {
                                     the_post_thumbnail('seokar-thumbnail', ['loading' => 'lazy']);
@@ -81,8 +94,8 @@ get_header(); ?>
                     <?php endwhile; ?>
                 </div>
 
-                <!-- صفحه‌بندی -->
-                <div class="pagination">
+                <!-- صفحه‌بندی AJAX -->
+                <div id="pagination-container">
                     <?php the_posts_pagination(array(
                         'mid_size'  => 2,
                         'prev_text' => __('« قبلی', 'seokar'),
