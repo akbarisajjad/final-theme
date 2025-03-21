@@ -1,7 +1,7 @@
 # 📌 نسخه حرفه‌ای robots.txt برای وردپرس - Seokar
 
+# 🎯 تنظیمات عمومی برای تمام ربات‌ها
 User-agent: *
-# 🚀 دسترسی به محتوای ضروری
 Allow: /wp-content/uploads/
 Allow: /wp-admin/admin-ajax.php
 
@@ -14,31 +14,17 @@ Disallow: /wp-content/themes/
 Disallow: /cgi-bin/
 Disallow: /trackback/
 Disallow: /xmlrpc.php
-Disallow: /?s=
-Disallow: /search/
 Disallow: /wp-json/
 Disallow: /feed/
 Disallow: /comments/
 Disallow: /author/
+Disallow: /wp-login.php
+Disallow: /readme.html
+Disallow: /license.txt
 Disallow: /*?replytocom
 Disallow: /*?orderby=
 Disallow: /*?filter=
 Disallow: /*preview=true
-
-# ✅ اجازه دسترسی به مهم‌ترین بخش‌ها
-Allow: /wp-content/uploads/
-Allow: /wp-admin/admin-ajax.php
-
-# 🎯 بهینه‌سازی برای Googlebot
-User-agent: Googlebot
-Allow: /wp-content/uploads/
-Allow: /wp-admin/admin-ajax.php
-Disallow: /wp-content/plugins/
-
-# 📌 بهینه‌سازی برای Bingbot
-User-agent: Bingbot
-Allow: /wp-content/uploads/
-Disallow: /wp-admin/
 
 # 📊 جلوگیری از ایندکس شدن پارامترهای بی‌ارزش
 Disallow: /*?utm_source=
@@ -46,14 +32,38 @@ Disallow: /*?utm_medium=
 Disallow: /*?utm_campaign=
 Disallow: /*?ref=
 Disallow: /*?session=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+Disallow: /*?ysclid=
 
-# 🚀 نمایش سریع‌تر صفحات (فقط در گوگل)
+# 🚀 بهینه‌سازی برای Googlebot
 User-agent: Googlebot
+Allow: /wp-content/uploads/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-content/plugins/
+Crawl-delay: 3
+
+# 🎯 بهینه‌سازی برای Bingbot
+User-agent: Bingbot
+Allow: /wp-content/uploads/
+Disallow: /wp-admin/
 Crawl-delay: 5
+
+# 📷 بهینه‌سازی تصاویر در جستجوی گوگل
+User-agent: Googlebot-Image
+Allow: /wp-content/uploads/
 
 # ⚡ جلوگیری از مصرف زیاد منابع توسط YandexBot
 User-agent: YandexBot
+Disallow: /wp-admin/
+Disallow: /wp-content/plugins/
 Crawl-delay: 10
 
+# 🔄 پاک کردن پارامترهای غیرضروری از ایندکس گوگل
+Clean-param: utm_source&utm_medium&utm_campaign ref fbclid gclid ysclid on all
+
 # 🌐 مشخص کردن مسیر سایت‌مپ
-Sitemap: https://seokar.click/sitemap.xml
+Sitemap: https:/seokar.click/sitemap.xml
+Sitemap: https://seokar.click/news-sitemap.xml
+Sitemap: https://seokar.click/image-sitemap.xml
+Disallow: /wp-sitemap.xml
