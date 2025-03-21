@@ -157,4 +157,5 @@ function register_service_worker() {
     <?php
 }
 add_action('wp_footer', 'register_service_worker');
+require_once get_template_directory() . '/admin/admin-menu.php';
 ?>
