@@ -1,0 +1,73 @@
+/*--------------------------------------------------------------
+>>> استایل‌های مخصوص راست‌به‌چپ (RTL)
+--------------------------------------------------------------*/
+
+/* اطمینان از تنظیم متن راست‌چین */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* تنظیمات منو برای راست‌چین */
+.nav-menu {
+    direction: rtl;
+}
+.nav-menu ul {
+    padding-right: 0;
+}
+.nav-menu li {
+    float: right;
+}
+
+/* اصلاح موقعیت فهرست و زیرمنوها */
+.nav-menu ul ul {
+    right: 0;
+    left: auto;
+}
+
+/* تنظیم استایل عنوان‌ها */
+h1, h2, h3, h4, h5, h6 {
+    text-align: right;
+}
+
+/* تنظیم لینک‌ها و دکمه‌ها */
+a {
+    direction: rtl;
+}
+button, input, textarea, select {
+    text-align: right;
+}
+
+/* تنظیم استایل تصاویر */
+img {
+    direction: rtl;
+}
+
+/* تنظیم سایدبار */
+.widget {
+    text-align: right;
+}
+.widget ul {
+    padding-right: 0;
+}
+.widget ul li {
+    text-align: right;
+}
+
+/* اصلاح جهت‌بندی نوشته‌ها */
+.entry-content {
+    text-align: right;
+}
+
+/* اصلاح موقعیت دکمه‌ها */
+.read-more {
+    float: left;
+}
+
+/* استایل‌دهی مخصوص سایدبار و فوتر */
+.sidebar {
+    direction: rtl;
+}
+.footer-widgets {
+    text-align: right;
+}
