@@ -908,3 +908,67 @@
 .author-social a:hover {
     background: var(--accent-color);
 }
+/* ======= استایل صفحه نویسنده (author.php) ======= */
+.author-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.author-avatar img {
+    border-radius: 50%;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease-in-out;
+}
+
+.author-avatar img:hover {
+    transform: scale(1.1);
+}
+
+.author-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.author-post-count {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+.author-bio {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* لینک‌های شبکه‌های اجتماعی نویسنده */
+.author-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.author-social a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.author-social a i {
+    margin-right: 8px;
+}
+
+.author-social a:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
