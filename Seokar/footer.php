@@ -62,6 +62,13 @@ if (!defined('ABSPATH')) {
     </footer>
 
     <?php wp_footer(); ?>
-
+<!-- نوار نصب اپلیکیشن PWA -->
+<div id="pwa-install-banner" class="pwa-banner">
+    <div class="pwa-content">
+        <span>نصب اپلیکیشن سئوکار</span>
+        <button id="pwa-install-btn" class="pwa-btn">نصب</button>
+        <button id="pwa-close-btn" class="pwa-close">×</button>
+    </div>
+</div>
 </body>
 </html>
