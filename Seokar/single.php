@@ -71,5 +71,5 @@ get_header(); ?>
         <?php get_sidebar(); ?>
     </div>
 </div>
-
+<?php echo seokar_get_post_views(get_the_ID()); ?>
 <?php get_footer(); ?>
