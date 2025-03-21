@@ -62,7 +62,7 @@ The theme did not sanitize user input, allowing the malicious script to execute.
 If applicable, add screenshots or a proof of concept (PoC) to demonstrate the vulnerability.  
 
 **Example:**  
-![XSS Vulnerability Screenshot]([[f](https://github.com/akbarisajjad/final-theme/blob/main/.github/ISSUE_TEMPLATE/xss.png)]
+![XSS Vulnerability Screenshot](https://github.com/akbarisajjad/final-theme/blob/main/.github/ISSUE_TEMPLATE/xss.png)
 
 ---
 
