@@ -18,14 +18,14 @@ get_header(); ?>
             <!-- عنوان برچسب -->
             <header class="tag-header">
                 <h1 class="tag-title">
-                    <?php printf(__('مطالب برچسب: %s', 'seokar'), single_tag_title('', false)); ?>
+                    <?php printf(__('مطالب دارای برچسب: %s', 'seokar'), single_tag_title('', false)); ?>
                 </h1>
                 <?php if (tag_description()) : ?>
                     <p class="tag-description"><?php echo tag_description(); ?></p>
                 <?php endif; ?>
             </header>
 
-            <!-- نمایش مطالب -->
+            <!-- نمایش مطالب دارای این برچسب -->
             <?php if (have_posts()) : ?>
                 <div class="post-grid">
                     <?php while (have_posts()) : the_post(); ?>
@@ -64,7 +64,7 @@ get_header(); ?>
                 </div>
 
             <?php else : ?>
-                <p class="no-posts"><?php _e('محتوایی برای این برچسب یافت نشد.', 'seokar'); ?></p>
+                <p class="no-posts"><?php _e('متأسفیم! هیچ مطلبی با این برچسب یافت نشد.', 'seokar'); ?></p>
             <?php endif; ?>
         </main>
 
