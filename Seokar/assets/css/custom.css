@@ -945,3 +945,129 @@
         max-width: 100%;
     }
 }
+/* ======= استایل نظرات (comments.php) ======= */
+.comments-area {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background: var(--secondary-color);
+    box-shadow: var(--shadow-light);
+}
+
+.comments-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* لیست نظرات */
+.comment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comment {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-author img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: var(--shadow-light);
+}
+
+.comment-meta {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.comment-content {
+    margin-top: 5px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* دکمه‌های پاسخ، ویرایش و حذف */
+.comment-reply-link,
+.comment-edit-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.comment-reply-link:hover,
+.comment-edit-link:hover {
+    background: var(--accent-color);
+}
+
+/* فرم ارسال نظر */
+.comment-form-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.comment-form-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.comment-form-field {
+    margin-bottom: 15px;
+}
+
+.comment-form-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-form-field input,
+.comment-form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.comment-form-field textarea {
+    resize: vertical;
+}
+
+/* دکمه ارسال */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 15px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    }
