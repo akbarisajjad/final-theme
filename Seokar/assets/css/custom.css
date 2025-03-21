@@ -273,3 +273,95 @@
 .nav-next a:hover {
     background: var(--primary-color);
 }
+/* ======= صفحه داخلی (برگه) ======= */
+.single-page {
+    background: var(--background-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+/* تصویر شاخص برگه با افکت */
+.page-thumbnail {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.page-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(80%);
+    transition: all 0.3s ease-in-out;
+}
+
+.page-thumbnail:hover img {
+    filter: brightness(100%);
+}
+
+/* Overlay */
+.page-thumbnail .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* عنوان برگه */
+.entry-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.entry-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* مسیر صفحه (Breadcrumbs) */
+.breadcrumbs {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* محتوای برگه */
+.entry-content {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: var(--text-color);
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* دکمه بازگشت به صفحه اصلی */
+.back-to-home {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+}
