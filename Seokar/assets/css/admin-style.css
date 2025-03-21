@@ -1,0 +1,95 @@
+/* ✅ استایل کلی صفحه تنظیمات */
+.wrap {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+/* ✅ عنوان اصلی تنظیمات */
+.wrap h1 {
+    color: #222;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+}
+
+/* ✅ استایل فرم تنظیمات */
+form {
+    margin-top: 20px;
+}
+
+/* ✅ فیلدهای ورودی */
+input[type="text"],
+input[type="color"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* ✅ فیلدهای رنگ */
+input[type="color"] {
+    height: 40px;
+    cursor: pointer;
+}
+
+/* ✅ استایل دکمه‌ها */
+.submit input {
+    background: #0073aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit input:hover {
+    background: #005177;
+}
+
+/* ✅ پیام‌های موفقیت و هشدار */
+.notice-success {
+    background: #dff0d8;
+    border-left: 4px solid #3c763d;
+    padding: 15px;
+    color: #3c763d;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.notice-warning {
+    background: #fcf8e3;
+    border-left: 4px solid #8a6d3b;
+    padding: 15px;
+    color: #8a6d3b;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* ✅ استایل حالت تاریک */
+.dark-mode-active {
+    background: #222;
+    color: white;
+}
+
+.dark-mode-active h1 {
+    color: #f1f1f1;
+}
+
+.dark-mode-active input,
+.dark-mode-active select,
+.dark-mode-active textarea {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
