@@ -112,3 +112,9 @@ class Seokar_Admin_Menu {
 
 // مقداردهی اولیه کلاس
 Seokar_Admin_Menu::get_instance();
+function seokar_admin_enqueue_scripts($hook) {
+    if ($hook === 'toplevel_page_seokar-theme-settings') {
+        wp_enqueue_script('seokar-admin-scripts', get_template_directory_uri() . '/assets/js/admin-scripts.js', array('jquery'), '1.0.0', true);
+    }
+}
+add_action('admin_enqueue_scripts', 'seokar_admin_enqueue_scripts');
