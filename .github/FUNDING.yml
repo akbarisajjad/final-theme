@@ -1,1 +1,22 @@
-تت
+# 🚀 FUNDING.yml for Seokar WordPress Theme
+
+# GitHub Sponsors
+github:
+  - akbarisajjad  # Replace with your GitHub username
+
+# Patreon
+patreon: seokar-theme  # Replace with your Patreon username or project name
+
+# Open Collective
+open_collective: seokar  # Replace with your Open Collective project name
+
+# Custom URLs (e.g., PayPal, Buy Me a Coffee, etc.)
+custom:
+  - https://paypal.me/akbarisajjad  # Replace with your PayPal link
+  - https://www.buymeacoffee.com/seokar  # Replace with your Buy Me a Coffee link
+
+# Other platforms (optional)
+ko_fi: seokar  # Replace with your Ko-fi username
+tidelift: seokar  # Replace with your Tidelift project name
+liberapay: seokar  # Replace with your Liberapay username
+community_bridge: seokar  # Replace with your Community Bridge project name
