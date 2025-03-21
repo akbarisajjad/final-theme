@@ -90,3 +90,24 @@
 .footer-menu ul li a:hover {
     color: var(--primary-color);
 }
+.widget-area {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.widget {
+    margin-bottom: 20px;
+}
+
+.widget-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .widget-area {
+        margin-top: 20px;
+    }
+}
