@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <!-- 🎨 تنظیمات کاشی‌های ویندوز (Live Tiles) -->
+        <tile>
+            <square70x70logo src="https://seokar.click/assets/images/icons/ms-icon-70x70.png"/>
+            <square150x150logo src="https://seokar.click/assets/images/icons/ms-icon-150x150.png"/>
+            <square310x310logo src="https://seokar.click/assets/images/icons/ms-icon-310x310.png"/>
+            <wide310x150logo src="https://seokar.click/assets/images/icons/ms-icon-310x150.png"/>
+            <TileColor>#0073e6</TileColor>
+        </tile>
+
+        <!-- 📌 تنظیمات نوار مرورگر Edge -->
+        <browser>
+            <homepage>https://seokar.click</homepage>
+        </browser>
+
+        <!-- 🔥 تنظیمات نوار وظیفه ویندوز -->
+        <taskbar>
+            <backbuttonimage src="https://seokar.click/assets/images/icons/back-button.png"/>
+            <buttoncolor>#ff5722</buttoncolor>
+        </taskbar>
+    </msapplication>
+</browserconfig>
