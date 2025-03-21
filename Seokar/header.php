@@ -70,3 +70,4 @@ if (!defined('ABSPATH')) {
 
     <!-- شروع محتوا -->
     <main id="content" class="site-content">
+<img src="<?php echo esc_url(get_option('seokar_logo', get_template_directory_uri() . '/assets/images/logo.png')); ?>" alt="لوگو">
