@@ -457,3 +457,52 @@
         grid-template-columns: 1fr;
     }
 }
+.archive-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.archive-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.archive-count {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* فیلتر دسته‌بندی و تاریخ */
+.filter-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-container select {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--secondary-color);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+}
+
+/* افکت محو شدن برای نمایش پست‌ها */
+.animated-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
