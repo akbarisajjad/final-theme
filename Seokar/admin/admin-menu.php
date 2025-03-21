@@ -118,3 +118,9 @@ function seokar_admin_enqueue_scripts($hook) {
     }
 }
 add_action('admin_enqueue_scripts', 'seokar_admin_enqueue_scripts');
+function seokar_admin_enqueue_styles($hook) {
+    if ($hook === 'toplevel_page_seokar-theme-settings') {
+        wp_enqueue_style('seokar-admin-style', get_template_directory_uri() . '/assets/css/admin-style.css', array(), '1.0.0');
+    }
+}
+add_action('admin_enqueue_scripts', 'seokar_admin_enqueue_styles');
